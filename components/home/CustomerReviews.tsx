@@ -110,25 +110,6 @@ export default function CustomerReviews({ reviews }: { reviews?: Review[] }) {
           ))}
         </div>
 
-        {/* Video placeholder */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-8 relative overflow-hidden aspect-[21/6] min-h-[120px] bg-[#1A1410] flex items-center justify-center"
-        >
-          <img
-            src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1200&q=70"
-            alt="Video"
-            className="absolute inset-0 w-full h-full object-cover opacity-30"
-          />
-          <div className="relative z-10 text-center">
-            <div className="w-14 h-14 border-2 border-white rounded-full flex items-center justify-center mx-auto mb-3 hover:bg-white/10 cursor-pointer transition-colors">
-              <div className="w-0 h-0 border-t-[9px] border-t-transparent border-l-[15px] border-l-white border-b-[9px] border-b-transparent ml-1" />
-            </div>
-            <p className="font-body text-white text-xs tracking-[0.25em] uppercase">Watch Customer Stories</p>
-          </div>
-        </motion.div>
       </div>
     </section>
   )
