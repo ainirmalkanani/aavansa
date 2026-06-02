@@ -1,5 +1,26 @@
 @import "tailwindcss";
 
+/* ─── Music Player — vertical range slider ──────────────────── */
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #C9A96E;
+  cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 0 4px rgba(201,169,110,0.5);
+}
+input[type='range']::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #C9A96E;
+  cursor: pointer;
+  border: 2px solid #fff;
+}
+input[type='range'] { -webkit-appearance: none; appearance: none; }
+
 /* ─── Tailwind v4 Theme ─────────────────────────────────────── */
 @theme {
   /* Font families — next/font sets --font-playfair etc on <html> */

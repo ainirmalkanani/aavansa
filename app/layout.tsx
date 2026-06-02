@@ -6,6 +6,7 @@ import { WishlistProvider } from '@/context/WishlistContext'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import CartDrawer from '@/components/cart/CartDrawer'
+import MusicPlayer from '@/components/ui/MusicPlayer'
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -51,6 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <main className="min-h-screen">{children}</main>
             <Footer />
             <CartDrawer />
+            <MusicPlayer />
           </WishlistProvider>
         </CartProvider>
       </body>
