@@ -7,6 +7,10 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import CartDrawer from '@/components/cart/CartDrawer'
 import MusicPlayer from '@/components/ui/MusicPlayer'
+import SmoothScrollProvider from '@/components/ui/SmoothScrollProvider'
+import CustomCursor from '@/components/ui/CustomCursor'
+import LoadingScreen from '@/components/ui/LoadingScreen'
+import PageTransition from '@/components/ui/PageTransition'
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -45,16 +49,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={`${playfair.variable} ${cormorant.variable} ${inter.variable}`}
     >
-      <body className="font-body antialiased">
-        <CartProvider>
-          <WishlistProvider>
-            <Header />
-            <main className="min-h-screen">{children}</main>
-            <Footer />
-            <CartDrawer />
-            <MusicPlayer />
-          </WishlistProvider>
-        </CartProvider>
+      <body className="font-body antialiased cursor-none">
+        <SmoothScrollProvider>
+          <CartProvider>
+            <WishlistProvider>
+              <LoadingScreen />
+              <CustomCursor />
+              <Header />
+              <main className="min-h-screen">
+                <PageTransition>{children}</PageTransition>
+              </main>
+              <Footer />
+              <CartDrawer />
+              <MusicPlayer />
+            </WishlistProvider>
+          </CartProvider>
+        </SmoothScrollProvider>
       </body>
     </html>
   )

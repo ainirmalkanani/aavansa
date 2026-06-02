@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+/* ─── Custom cursor — hide default on desktop ───────────────── */
+@media (pointer: fine) {
+  *, *::before, *::after { cursor: none !important; }
+}
+@media (pointer: coarse) {
+  /* Touch devices — restore default cursor */
+  *, *::before, *::after { cursor: auto !important; }
+  body { cursor: auto !important; }
+}
+
+/* ─── Lenis smooth scroll ────────────────────────────────────── */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
 /* ─── Music Player — vertical range slider ──────────────────── */
 input[type='range']::-webkit-slider-thumb {
   -webkit-appearance: none;
