@@ -1,26 +1,95 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ─── Tailwind v4 Theme ─────────────────────────────────────── */
+@theme {
+  /* Font families — next/font sets --font-playfair etc on <html> */
+  --font-heading: var(--font-playfair), 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-italic:  var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
+  --font-sans:    var(--font-inter), 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Brand colours */
+  --color-gold:       #C9A96E;
+  --color-gold-light: #E8D5B0;
+  --color-gold-dark:  #A07840;
+  --color-champagne:  #F5EDD8;
+  --color-ivory:      #FDFAF5;
+  --color-beige:      #F0EBE1;
+  --color-warm-gray:  #8B8279;
+  --color-dark-brown: #2C2420;
+  --color-mid-brown:  #5C4A3E;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ─── Base Styles ────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+html { scroll-behavior: smooth; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #FDFAF5;
+  color: #2C2420;
+  font-family: var(--font-inter), 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  line-height: 1.6;
 }
+
+/* Apply Playfair to all headings globally */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-playfair), 'Playfair Display', Georgia, serif;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+/* Utility classes for fonts — use these as className */
+.font-heading {
+  font-family: var(--font-playfair), 'Playfair Display', Georgia, serif !important;
+}
+.font-body {
+  font-family: var(--font-inter), 'Inter', system-ui, sans-serif !important;
+}
+.font-serif-italic {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif !important;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #F0EBE1; }
+::-webkit-scrollbar-thumb { background: #C9A96E; border-radius: 2px; }
+
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ─── Animations ─────────────────────────────────────────────── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+.animate-marquee      { animation: marquee 30s linear infinite; }
+.animate-fade-in-up   { animation: fadeInUp 0.7s ease forwards; }
+.animate-shimmer      {
+  animation: shimmer 2s infinite;
+  background: linear-gradient(90deg, #f0ebe1 25%, #fdfaf5 50%, #f0ebe1 75%);
+  background-size: 200% 100%;
+}
+.animate-pulse-dot    { animation: pulse-dot 2s ease-in-out infinite; }
+
+/* ─── Swiper overrides ───────────────────────────────────────── */
+.swiper-pagination-bullet        { background: #C9A96E !important; opacity: 0.4; }
+.swiper-pagination-bullet-active { opacity: 1 !important; }
+
+/* ─── Image optimisation ─────────────────────────────────────── */
+img { max-width: 100%; height: auto; }
